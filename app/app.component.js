@@ -31,7 +31,7 @@ System.register(['angular2/core', 'angular2/router', './homepage.component', './
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n\t<div class=\"container\">\n\t\t<h1>Angular 2 Task1</h1>\n\t\t<a [routerLink]=\"['Homepage']\">Home</a>\n\t\t<a [routerLink]=\"['AboutUsPage']\">About Us</a>\n\t\t<router-outlet></router-outlet>\n\t</div>\n\t",
+                        templateUrl: '../views/dashboard.html',
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
