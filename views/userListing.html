@@ -9,8 +9,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="#user of users">
-        <td><img [src]="user.imageUrl" class="img-rounded" alt="Cinque Terre" width="150" height="150"></td>
+      <tr *ngFor="#user of users" (click)="onUserSelect(user)">
+        <td><img [src]="user.imageUrl" class="img-rounded" width="150" height="150"></td>
         <td><p>{{user.name}}</p></td>
         <td>{{user.email}}</td>
         <td>{{user.description}}</td>
