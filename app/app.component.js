@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './homepage.component', './about-us-page.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './homepage.component', './about-us-page.component', './user-listing.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', './homepage.component', './
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, homepage_component_1, about_us_page_component_1;
+    var core_1, router_1, homepage_component_1, about_us_page_component_1, user_listing_component_1;
     var AppComponent;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(['angular2/core', 'angular2/router', './homepage.component', './
             },
             function (about_us_page_component_1_1) {
                 about_us_page_component_1 = about_us_page_component_1_1;
+            },
+            function (user_listing_component_1_1) {
+                user_listing_component_1 = user_listing_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -37,6 +40,7 @@ System.register(['angular2/core', 'angular2/router', './homepage.component', './
                     router_1.RouteConfig([
                         { path: '/home', name: 'Homepage', component: homepage_component_1.HomepageComponent },
                         { path: '/aboutUs', name: 'AboutUsPage', component: about_us_page_component_1.AboutUsPageComponent },
+                        { path: '/userListing', name: 'UserListing', component: user_listing_component_1.UserListingComponent },
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

@@ -1,0 +1,19 @@
+<h2>User Listing</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Email Id</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="#user of users">
+        <td><img [src]="user.imageUrl" class="img-rounded" alt="Cinque Terre" width="150" height="150"></td>
+        <td><p>{{user.name}}</p></td>
+        <td>{{user.email}}</td>
+        <td>{{user.description}}</td>
+      </tr>
+    </tbody>
+  </table>
