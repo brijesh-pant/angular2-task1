@@ -31,14 +31,16 @@ System.register(['angular2/core', 'angular2/router', './user.service'], function
                 }
                 UserInfoComponent.prototype.onEdit = function () {
                     this.editUser = true;
-                    this.user = undefined;
+                    this.originalUser = this.user;
                 };
                 UserInfoComponent.prototype.onUpdateDetails = function () {
-                    this.user = this.userToEdit;
+                    this.editUser = false;
                     this.goToUserInfo();
                 };
                 UserInfoComponent.prototype.onCancel = function () {
-                    //this.goToUserInfo();
+                    this.user = this.originalUser;
+                    this.editUser = false;
+                    this.goToUserInfo();
                 };
                 UserInfoComponent.prototype.goToUserInfo = function () {
                     console.log(this.user.id);
@@ -47,11 +49,12 @@ System.register(['angular2/core', 'angular2/router', './user.service'], function
                 };
                 UserInfoComponent.prototype.ngOnInit = function () {
                     var _this = this;
+                    this.editUser = false;
                     var id = this._routeParams.get('id');
                     this._userService.getUser(id).then(function (user) {
                         _this.user = user;
-                        _this.userToEdit = user;
                     });
+                    console.log(this.user);
                 };
                 UserInfoComponent = __decorate([
                     core_1.Component({

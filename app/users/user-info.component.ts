@@ -13,27 +13,27 @@ import {UserService} from './user.service';
 
 export class UserInfoComponent implements OnInit { 
 	public user: User;
-	public userToEdit: User;
-	public cancelEdit: User;
+	public originalUser: User;
 	public editUser: boolean;
 	constructor(private _router: Router,
 		private _routeParams: RouteParams,
 		private _userService: UserService){
-
 	}
 
 	onEdit(){
 		this.editUser = true;
-		this.user = undefined;
+		this.originalUser = this.user;
 	}
 
 	onUpdateDetails(){
-		this.user = this.userToEdit;
+		this.editUser = false;
 		this.goToUserInfo();
 	}
 
 	onCancel(){
-		//this.goToUserInfo();
+		this.user = this.originalUser;
+		this.editUser = false;
+		this.goToUserInfo();
 	}
 
 	goToUserInfo(){
@@ -43,11 +43,12 @@ export class UserInfoComponent implements OnInit {
 	}
 
 	ngOnInit(){
+		this.editUser = false;
 		let id = this._routeParams.get('id');
 		this._userService.getUser(id).then(user => {
 			this.user = user;
-			this.userToEdit = user;
-		} );
+		});
+		console.log(this.user);
 	}
 }
 
