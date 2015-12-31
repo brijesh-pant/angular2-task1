@@ -28,7 +28,11 @@ System.register(['angular2/core', 'angular2/router', './user.service'], function
                     this._userService = _userService;
                 }
                 UserListingComponent.prototype.getUsers = function () {
-                    this.users = this._userService.getUsers();
+                    var _this = this;
+                    this._userService.getUsers().then(function (users) {
+                        _this.users = users;
+                        console.log("In user listing", _this.users);
+                    });
                 };
                 UserListingComponent.prototype.ngOnInit = function () {
                     this.getUsers();

@@ -41,7 +41,7 @@ System.register(['angular2/core', 'angular2/router', './homepage.component', './
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
-                        { path: '/home', name: 'Homepage', component: homepage_component_1.HomepageComponent },
+                        { path: '/home', name: 'Homepage', component: homepage_component_1.HomepageComponent, useAsDefault: true },
                         { path: '/aboutUs', name: 'AboutUsPage', component: about_us_page_component_1.AboutUsPageComponent },
                         { path: '/userInfo/:id', name: 'UserInfo', component: user_info_component_1.UserInfoComponent },
                         { path: '/userListing', name: 'UserListing', component: user_listing_component_1.UserListingComponent },

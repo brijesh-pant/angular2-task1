@@ -12,7 +12,7 @@ import {UserInfoComponent} from './users/user-info.component'
 	directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-	{path:'/home', name: 'Homepage', component: HomepageComponent},
+	{path:'/home', name: 'Homepage', component: HomepageComponent, useAsDefault: true},
 	{path:'/aboutUs', name: 'AboutUsPage', component: AboutUsPageComponent},
 	{path:'/userInfo/:id', name: 'UserInfo', component: UserInfoComponent},
 	{path:'/userListing', name: 'UserListing', component: UserListingComponent},

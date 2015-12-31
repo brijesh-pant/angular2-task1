@@ -7,7 +7,7 @@
 6 silly lifecycle angular2-quickstart@1.0.0~prelite: no script for prelite, continuing
 7 info lifecycle angular2-quickstart@1.0.0~lite: angular2-quickstart@1.0.0
 8 verbose lifecycle angular2-quickstart@1.0.0~lite: unsafe-perm in lifecycle true
-9 verbose lifecycle angular2-quickstart@1.0.0~lite: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/daffolap-238/brijesh/Practice/Angular/angular2-task1/node_modules/.bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/home/daffolap-238/brijesh/Practice/Angular/angular2-task1/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+9 verbose lifecycle angular2-quickstart@1.0.0~lite: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/daffolap-238/brijesh/Practice/Angular/angular2-task1/node_modules/.bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/home/daffolap-238/brijesh/Practice/Angular/angular2-task1/node_modules/.bin:/home/daffolap-238/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/daffolap-238/java_lib/apache-maven-3.1.1/bin
 10 verbose lifecycle angular2-quickstart@1.0.0~lite: CWD: /home/daffolap-238/brijesh/Practice/Angular/angular2-task1
 11 silly lifecycle angular2-quickstart@1.0.0~lite: Args: [ '-c', 'lite-server' ]
 12 silly lifecycle angular2-quickstart@1.0.0~lite: Returned: code: 1  signal: null

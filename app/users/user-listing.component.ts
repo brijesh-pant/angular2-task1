@@ -17,7 +17,10 @@ export class UserListingComponent implements OnInit {
 		private _userService: UserService) { }
 
 	getUsers(){
-		this.users = this._userService.getUsers();
+		this._userService.getUsers().then( users =>{
+			this.users = users;
+			console.log("In user listing", this.users);
+		} );
 	}
 
 	ngOnInit(){

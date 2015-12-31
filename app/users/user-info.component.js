@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', './user.service'], function
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, user_service_1;
+    var core_1, router_1, router_2, user_service_1;
     var UserInfoComponent;
     return {
         setters:[
@@ -17,30 +17,48 @@ System.register(['angular2/core', 'angular2/router', './user.service'], function
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+                router_2 = router_1_1;
             },
             function (user_service_1_1) {
                 user_service_1 = user_service_1_1;
             }],
         execute: function() {
             UserInfoComponent = (function () {
-                function UserInfoComponent(_routeParams, _userService) {
+                function UserInfoComponent(_router, _routeParams, _userService) {
+                    this._router = _router;
                     this._routeParams = _routeParams;
                     this._userService = _userService;
                 }
                 UserInfoComponent.prototype.onEdit = function () {
                     this.editUser = true;
+                    this.user = undefined;
+                };
+                UserInfoComponent.prototype.onUpdateDetails = function () {
+                    this.user = this.userToEdit;
+                    this.goToUserInfo();
+                };
+                UserInfoComponent.prototype.onCancel = function () {
+                    //this.goToUserInfo();
+                };
+                UserInfoComponent.prototype.goToUserInfo = function () {
+                    console.log(this.user.id);
+                    var route = ['UserInfo', { id: this.user.id }];
+                    this._router.navigate(route);
                 };
                 UserInfoComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     var id = this._routeParams.get('id');
-                    this._userService.getUser(id).then(function (user) { return _this.user = user; });
+                    this._userService.getUser(id).then(function (user) {
+                        _this.user = user;
+                        _this.userToEdit = user;
+                    });
                 };
                 UserInfoComponent = __decorate([
                     core_1.Component({
                         templateUrl: '/views/userInfo.html',
                         providers: [user_service_1.UserService]
                     }), 
-                    __metadata('design:paramtypes', [router_1.RouteParams, user_service_1.UserService])
+                    __metadata('design:paramtypes', [router_1.Router, router_2.RouteParams, user_service_1.UserService])
                 ], UserInfoComponent);
                 return UserInfoComponent;
             })();
