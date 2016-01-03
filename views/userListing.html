@@ -1,19 +1,27 @@
 <h2>User Listing</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Email Id</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="#user of users" (click)="onUserSelect(user)">
-        <td><img [src]="user.imageUrl" class="img-rounded" width="150" height="150"></td>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th class="form-inline">Name
+        <select class="form-control"  (change)="onSort($event,'name')">
+          <option *ngFor="#order of sortOrder" [value]="order.orderValue">{{order.orderOption}}</option>
+        </select>
+      </th>
+      <th class="form-inline">Email Id
+        <select class="form-control"  (change)="onSort($event,'email')">
+          <option *ngFor="#order of sortOrder" [value]="order.orderValue">{{order.orderOption}}</option>
+        </select>
+      </th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="users">
+    <tr *ngFor="#user of users | sort:order" (click)="onUserSelect(user)">
+        <td><img [src]="user.imageUrl" class="img-rounded" width="100" height="100"></td>
         <td><p>{{user.name}}</p></td>
         <td>{{user.email}}</td>
         <td>{{user.description}}</td>
-      </tr>
-    </tbody>
-  </table>
+    </tr>
+  </tbody>
+</table>
