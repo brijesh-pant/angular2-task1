@@ -13,16 +13,15 @@
 </nav>
 
 <div class="container-fluid">
-	<div class="col-sm-2 sidebar">
-		<div>
-		<ul class="nav nav-sidebar">
-	    	<li><a [routerLink]="['Homepage']">Home</a>	</li>
-	        <li><a [routerLink]="['AboutUsPage']">About Us</a> </li>
-	        <li><a href="#">User Info</a></li>
-	        <li><a [routerLink]="['UserListing']">User Listing</a> </li>
-	        <li><a href="#">Contact Us</a></li>
-         </ul>
-		</div>	
+	<div class="col-sm-2">
+		<ul class="list-group">
+			<li class="list-group-item"><label><a [routerLink]="['Homepage']">Home</a></label></li>
+	        <li class="list-group-item"><label><a [routerLink]="['AboutUsPage']">About Us</a></label></li>
+	        <li class="list-group-item"><label><a href="#">User Info</a></label></li>
+	        <li class="list-group-item"><label><a [routerLink]="['UserListing']">User Listing</a> </label></li>
+	        <li class="list-group-item"><label><a href="#">Contact Us</a></label></li>
+	        <li class="list-group-item"><label><a [routerLink]="['RegisterUser']">Register User</a></label></li>
+		</ul>
 	</div>
 	<div class="col-sm-10">
 		<router-outlet></router-outlet>
