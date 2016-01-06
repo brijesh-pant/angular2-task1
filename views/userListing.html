@@ -1,28 +1,35 @@
 <h2>User Listing</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th class="form-inline">Name
-        <select class="form-control"  (change)="onSort($event,'name')">
-          <option *ngFor="#order of sortOrder" [value]="order.orderValue">{{order.orderOption}}</option>
-        </select>
-      </th>
-      <th class="form-inline">Email Id
-        <select class="form-control"  (change)="onSort($event,'email')">
-          <option *ngFor="#order of sortOrder" [value]="order.orderValue">{{order.orderOption}}</option>
-        </select>
-      </th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody *ngIf="users">
-    <tr *ngFor="#user of users | sort:order">
-        <td><img [src]="user.imageUrl" class="img-rounded" width="100" height="100"></td>
-        <td  (click)="onUserSelect(user)"><p>{{user.name}}</p></td>
-        <td>{{user.email}}</td>
-        <td>{{user.description}}</td>
-        <td (click)="onCheckSales(user)"><button class="btn btn-info">Show sales</button></td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <ul class="list-inline">
+    <li> User Name : 
+      <select class="form-control"  (change)="onSort($event,'name')">
+        <option *ngFor="#order of sortOrder" [value]="order.orderValue">{{order.orderOption}}</option>
+      </select>
+    </li>
+    <li> User Email Id :
+      <select class="form-control"  (change)="onSort($event,'email')">
+        <option *ngFor="#order of sortOrder" [value]="order.orderValue">{{order.orderOption}}</option>
+      </select>
+    </li>
+  </ul>
+  
+</div>
+<div class="row">
+  <div *ngFor="#user of users | sort:order">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+         <img [src]="user.imageUrl" class="img-rounded" width="200" height="200">
+      </div>
+    
+      <div class="caption">
+         <h2 (click)="onUserSelect(user)">{{user.name}}</h2>
+         <h3>{{user.email}}</h3>
+         <p>{{user.description}}</p>
+         
+         <p>
+            <button (click)="onCheckSales(user)" class="btn btn-info">Show sales</button>
+         </p>
+      </div>
+    </div>
+  </div>
+</div>
