@@ -38,6 +38,8 @@ System.register(['angular2/core', 'angular2/router', './user.service'], function
                     this.goToUserInfo();
                 };
                 UserInfoComponent.prototype.onCancel = function () {
+                    // cancel not done this.editUser referencing to the same this.user object 
+                    // create a new user object from this.user to solve this
                     this.user = this.originalUser;
                     this.editUser = false;
                     this.goToUserInfo();
@@ -54,7 +56,6 @@ System.register(['angular2/core', 'angular2/router', './user.service'], function
                     this._userService.getUser(id).then(function (user) {
                         _this.user = user;
                     });
-                    console.log(this.user);
                 };
                 UserInfoComponent = __decorate([
                     core_1.Component({

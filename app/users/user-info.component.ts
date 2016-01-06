@@ -31,6 +31,8 @@ export class UserInfoComponent implements OnInit {
 	}
 
 	onCancel(){
+		// cancel not done this.editUser referencing to the same this.user object 
+		// create a new user object from this.user to solve this
 		this.user = this.originalUser;
 		this.editUser = false;
 		this.goToUserInfo();
@@ -48,7 +50,6 @@ export class UserInfoComponent implements OnInit {
 		this._userService.getUser(id).then(user => {
 			this.user = user;
 		});
-		console.log(this.user);
 	}
 }
 

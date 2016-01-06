@@ -17,11 +17,12 @@
     </tr>
   </thead>
   <tbody *ngIf="users">
-    <tr *ngFor="#user of users | sort:order" (click)="onUserSelect(user)">
+    <tr *ngFor="#user of users | sort:order">
         <td><img [src]="user.imageUrl" class="img-rounded" width="100" height="100"></td>
-        <td><p>{{user.name}}</p></td>
+        <td  (click)="onUserSelect(user)"><p>{{user.name}}</p></td>
         <td>{{user.email}}</td>
         <td>{{user.description}}</td>
+        <td (click)="onCheckSales(user)"><button class="btn btn-info">Show sales</button></td>
     </tr>
   </tbody>
 </table>

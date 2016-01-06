@@ -14,7 +14,7 @@ import {RegisterUserComponent} from './register-user.component'
 })
 @RouteConfig([
 	{path:'/home', name: 'Homepage', component: HomepageComponent, useAsDefault: true},
-	{path:'/aboutUs', name: 'AboutUsPage', component: AboutUsPageComponent},
+	{path:'/aboutUs/:id', name: 'AboutUsPage', component: AboutUsPageComponent},
 	{path:'/userInfo/:id', name: 'UserInfo', component: UserInfoComponent},
 	{path:'/userListing', name: 'UserListing', component: UserListingComponent},
 	{path: '/register', name: 'RegisterUser', component: RegisterUserComponent}

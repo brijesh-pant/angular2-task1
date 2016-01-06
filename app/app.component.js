@@ -45,7 +45,7 @@ System.register(['angular2/core', 'angular2/router', './homepage.component', './
                     }),
                     router_1.RouteConfig([
                         { path: '/home', name: 'Homepage', component: homepage_component_1.HomepageComponent, useAsDefault: true },
-                        { path: '/aboutUs', name: 'AboutUsPage', component: about_us_page_component_1.AboutUsPageComponent },
+                        { path: '/aboutUs/:id', name: 'AboutUsPage', component: about_us_page_component_1.AboutUsPageComponent },
                         { path: '/userInfo/:id', name: 'UserInfo', component: user_info_component_1.UserInfoComponent },
                         { path: '/userListing', name: 'UserListing', component: user_listing_component_1.UserListingComponent },
                         { path: '/register', name: 'RegisterUser', component: register_user_component_1.RegisterUserComponent }

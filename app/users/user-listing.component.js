@@ -47,6 +47,10 @@ System.register(['angular2/core', 'angular2/router', './user.service', '../sort.
                 UserListingComponent.prototype.onUserSelect = function (user) {
                     this._router.navigate(['UserInfo', { id: user.id }]);
                 };
+                UserListingComponent.prototype.onCheckSales = function (user) {
+                    console.log("check sales", user.id);
+                    this._router.navigate(['../AboutUsPage', { id: user.id }]);
+                };
                 UserListingComponent.prototype.onSort = function (event, attribute) {
                     if (event.target.value == "undefined") {
                         this.order = undefined;

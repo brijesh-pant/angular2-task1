@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import {users} from './mock-users';
+//import {users} from './mock-users';
 import {User} from './user';
 
 @Injectable()
@@ -64,6 +64,6 @@ export class UserService {
 
 	getUser(id: number | string){
 		
-		return Promise.resolve(users).then(users => users.filter( user => user.id === id )[0]);
+		return this.getUsers().then(users => users.filter( user => user.id === id )[0]);
 	}
 }

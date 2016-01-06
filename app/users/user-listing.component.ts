@@ -41,6 +41,11 @@ export class UserListingComponent implements OnInit {
 		this._router.navigate(['UserInfo', { id: user.id }]);
 	}
 
+	onCheckSales(user: User){
+		console.log("check sales",user.id);
+		this._router.navigate(['../AboutUsPage', { id: user.id }]);
+	}
+
 	onSort(event: any,attribute: string){
 		if(event.target.value == "undefined"){
 			this.order = undefined;
