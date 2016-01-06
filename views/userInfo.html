@@ -16,31 +16,34 @@
 </div>
 <br/>
 <div *ngIf="user" [hidden]="!editUser">
-	<form class="form-horizontal" role="form">
+	<form class="form-horizontal" role="form" [ngFormModel]="updateUserForm" (ngSubmit)="onUpdateDetails(updateUserForm.value)">
 		<div class="form-group">
 	      <label class="control-label col-sm-2">Name:</label>
 	      <div class="col-sm-10">          
-	        <input type="text" [(ngModel)]="user.name" class="form-control" placeholder="Enter Name">
+	        <input type="text" class="form-control" placeholder="Enter Name" #name="ngForm" [ngFormControl]="updateUserForm.controls['name']">
+	        <control-messages control="name"></control-messages>
 	      </div>
 	    </div>
 	    <div class="form-group">
 	      <label class="control-label col-sm-2">Email:</label>
 	      <div class="col-sm-10">
-	        <input type="email" [(ngModel)]="user.email" class="form-control" placeholder="Enter email">
+	        <input type="email" class="form-control" placeholder="Enter email" #email="ngForm" [ngFormControl]="updateUserForm.controls['email']">
+	        <control-messages control="email"></control-messages>
 	      </div>
 	    </div>
 	    <div class="form-group">
 	      <label class="control-label col-sm-2">Description:</label>
-	      <div class="col-sm-10">          
-	        <input type="text" [(ngModel)]="user.description" class="form-control" placeholder="Enter description">
+	      <div class="col-sm-10">     
+	        <input type="text" class="form-control" placeholder="Enter description" #description="ngForm" [ngFormControl]="updateUserForm.controls['description']">
+	        <control-messages control="description"></control-messages>
 	      </div>
 	    </div>
-	    
 	    <div class="form-group">        
 	      <div class="col-sm-offset-2 col-sm-10">
-	        <button type="button" class="btn btn-info" (click)= "onUpdateDetails()">Update Details</button>
+	      <button type="submit" class="btn btn-info" [disabled]="!updateUserForm.valid" >Update Details</button>
+	        <!--<button type="button" class="btn btn-info" [disabled]="!updateUserForm.valid" (click)= "onUpdateDetails(updateUserForm.value)">Update Details</button>-->
 	        <button type="button" class="btn btn-info" (click)= "onCancel()">Cancel</button>
 	      </div>
-	    </div>
-  </form>
+	    </div>	    
+  </form>  
 </div>
