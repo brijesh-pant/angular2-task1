@@ -72,6 +72,23 @@ System.register(['angular2/core'], function(exports_1) {
                 UserService.prototype.getUser = function (id) {
                     return this.getUsers().then(function (users) { return users.filter(function (user) { return user.id === id; })[0]; });
                 };
+                UserService.prototype.getUserByEmail = function (emailId) {
+                    return this.getUsers().then(function (users) { return users.filter(function (user) { return user.email === emailId; })[0]; });
+                    /*console.log("Value emailid", emailId);
+                    return this.getUsers().then(users =>
+                        {
+                            console.log("Filtered user", users.filter(user => {
+                                console.log("emailId type", typeof(emailId));
+                                console.log("user email", user);
+                                console.log("typeof useremail",typeof (user.email));
+                                return user.email === emailId
+                            })[0]
+                            );
+                            
+                        }
+                        
+                        );*/
+                };
                 UserService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])

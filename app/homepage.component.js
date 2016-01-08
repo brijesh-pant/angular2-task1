@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,22 +8,33 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, router_1, router_2;
     var HomepageComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+                router_2 = router_1_1;
             }],
         execute: function() {
             HomepageComponent = (function () {
-                function HomepageComponent() {
+                function HomepageComponent(_router) {
+                    this._router = _router;
+                    this.values = [];
                 }
+                HomepageComponent.prototype.addElement = function (value) {
+                    this.values.push(value);
+                    console.log(this.values);
+                };
                 HomepageComponent = __decorate([
                     core_1.Component({
-                        template: "\n\t<h2>Home</h2>\n\t<p>Get your users here</p>"
+                        templateUrl: '/views/dashboard.html',
+                        directives: [router_2.ROUTER_DIRECTIVES]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router])
                 ], HomepageComponent);
                 return HomepageComponent;
             })();

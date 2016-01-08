@@ -66,4 +66,22 @@ export class UserService {
 		
 		return this.getUsers().then(users => users.filter( user => user.id === id )[0]);
 	}
+
+	getUserByEmail(emailId: string){
+		return this.getUsers().then(users => users.filter(user => user.email === emailId)[0]);
+		/*console.log("Value emailid", emailId);
+		return this.getUsers().then(users => 
+			{
+				console.log("Filtered user", users.filter(user => {
+					console.log("emailId type", typeof(emailId));
+					console.log("user email", user);
+					console.log("typeof useremail",typeof (user.email));
+					return user.email === emailId
+				})[0]
+				);
+				
+			}
+			
+			);*/
+	}
 }

@@ -46,7 +46,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../vali
                     this.originalUser = this.user;
                 };
                 UserInfoComponent.prototype.onUpdateDetails = function (user) {
-                    //console.log("user",user);
                     this.user.name = user.name;
                     this.user.email = user.email;
                     this.user.description = user.description;
@@ -62,7 +61,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../vali
                 UserInfoComponent.prototype.goToUserInfo = function () {
                     console.log("user id", this.user.id);
                     var route = ['UserInfo', { id: this.user.id }];
-                    console.log("route", route);
                     this._router.navigate(route);
                 };
                 UserInfoComponent.prototype.ngOnInit = function () {

@@ -23,7 +23,6 @@ export class UserInfoComponent implements OnInit {
 		private _routeParams: RouteParams,
 		private _userService: UserService,
 		private fb: FormBuilder) {
-			
 		}
 	
 	onEdit(){
@@ -32,7 +31,6 @@ export class UserInfoComponent implements OnInit {
 	}
 
 	onUpdateDetails(user: User){
-		//console.log("user",user);
 		this.user.name = user.name;
 		this.user.email = user.email;
 		this.user.description = user.description;
@@ -50,7 +48,6 @@ export class UserInfoComponent implements OnInit {
 	goToUserInfo(){
 		console.log("user id",this.user.id);
 		let route = ['UserInfo', { id: this.user.id }];
-		console.log("route", route);
 		this._router.navigate(route);
 	}
 
