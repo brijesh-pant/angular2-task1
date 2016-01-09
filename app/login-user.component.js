@@ -35,7 +35,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                     console.log("in login", username, password);
                     if (this.loggedIn() == true) {
                         console.log("true logged in");
-                        var route = ['Homepage'];
+                        var route = ['Dashboard'];
                         this._router.navigate(route);
                     }
                     else {
@@ -50,7 +50,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                             console.log("Before save jwt", data._body);
                             _this.saveJwt(data._body);
                         }, function (err) { return _this.logError(err); }, function () {
-                            var route = ['Homepage'];
+                            var route = ['Dashboard'];
                             _this._router.navigate(route);
                             console.log('Authentication Complete');
                         });
@@ -77,7 +77,8 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                 };
                 LoginUserComponent = __decorate([
                     core_1.Component({
-                        templateUrl: '/views/loginUser.html'
+                        templateUrl: '/views/loginUser.html',
+                        directives: [router_1.ROUTER_DIRECTIVES],
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, http_1.Http])
                 ], LoginUserComponent);

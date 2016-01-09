@@ -1,5 +1,4 @@
-import {Component} from 'angular2/core';
-import {OnInit} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router';
 
 import {User} from './user';

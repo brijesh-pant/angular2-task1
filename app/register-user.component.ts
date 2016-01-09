@@ -1,14 +1,16 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES,FormBuilder,Control,ControlGroup,Validators} from 'angular2/common';
 import {ControlMessagesComponent} from './validations/validation-service.component'
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
 	templateUrl: '../views/registerUser.html',
-	directives: [FORM_DIRECTIVES,ControlMessagesComponent]
+	directives: [FORM_DIRECTIVES, ControlMessagesComponent, ROUTER_DIRECTIVES]
 })
 
 export class RegisterUserComponent { 
 	registerUserForm: ControlGroup;
+	pwdValue: string;
 
 	constructor(fb: FormBuilder) {
 		this.registerUserForm = fb.group({
@@ -25,6 +27,12 @@ export class RegisterUserComponent {
 	onSubmit(value: string){
 		console.log("You submitted value", value);
 	}
+
+
+	/*confirmPwdValidator(group: ControlGroup): { [s: string]: boolean } {
+		//this.pwdValue = this.registerUserForm.controls.pwd.value;
+		//return { pwdMismatch: true };
+	}*/
 }
 
 

@@ -1,45 +1,59 @@
-<h2>Register User</h2>
-<form class="form-horizontal" role="form" (ngSubmit)="onSubmit(registerUserForm.value)" [ngFormModel]="registerUserForm">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Angular 2 Task1</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a [routerLink]="['LoginUser']">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h2>Register User</h2>
+  <form class="form-horizontal" role="form" (ngSubmit)="onSubmit(registerUserForm.value)" [ngFormModel]="registerUserForm">
 
-	<div class="form-group">
-    <label class="control-label col-sm-2" for="pwd">Name:</label>
-    <div class="col-sm-10">          
-      <input type="text" class="form-control" id="name" placeholder="Enter Name" #name="ngForm"  
-      [ngFormControl]="registerUserForm.controls['name']">
-      <control-messages control="name"></control-messages>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="name">Name:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="name" placeholder="Enter Name" #name="ngForm"  
+        [ngFormControl]="registerUserForm.controls['name']">
+        <control-messages control="name"></control-messages>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="email">Email:</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter email" #email="ngForm" [ngFormControl]="registerUserForm.controls['email']">
-      <!--<div [hidden]="!email.control.hasError('invalidEmail')" class="alert alert-danger">
-        Invalid email
-      </div>-->
-      <control-messages control="email"></control-messages>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" #email="ngForm" [ngFormControl]="registerUserForm.controls['email']">
+        <!--<div [hidden]="!email.control.hasError('invalidEmail')" class="alert alert-danger">
+          Invalid email
+        </div>-->
+        <control-messages control="email"></control-messages>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="pwd">Password:</label>
-    <div class="col-sm-10">          
-      <input type="password" class="form-control" id="pwd" placeholder="Enter Password" #pwd="ngForm" [ngFormControl]="registerUserForm.controls['pwd']">
-      <control-messages control="pwd"></control-messages>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter Password" #pwd="ngForm" [ngFormControl]="registerUserForm.controls['pwd']">
+        <control-messages control="pwd"></control-messages>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="confirmPwd">Confirm Password:</label>
-    <div class="col-sm-10">          
-      <input type="password" class="form-control" id="confirmPwd" placeholder="Confirm Password" #confirmPwd="ngForm" [ngFormControl]="registerUserForm.controls['confirmPwd']">
-      <control-messages control="confirmPwd"></control-messages>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="confirmPwd">Confirm Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="confirmPwd" placeholder="Confirm Password" #confirmPwd="ngForm" [ngFormControl]="registerUserForm.controls['confirmPwd']">
+        <control-messages control="confirmPwd"></control-messages>
+      </div>
     </div>
-  </div>
-    
-  <div class="form-group">        
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" [disabled]="!registerUserForm.valid">Submit</button>
+      
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default" [disabled]="!registerUserForm.valid">Submit</button>
+      </div>
     </div>
-  </div>
- </form>
+   </form>
+</div>

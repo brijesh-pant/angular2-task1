@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', './users/user.service'], fu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, router_2, user_service_1;
+    var core_1, router_1, user_service_1;
     var AboutUsPageComponent;
     return {
         setters:[
@@ -17,7 +17,6 @@ System.register(['angular2/core', 'angular2/router', './users/user.service'], fu
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-                router_2 = router_1_1;
             },
             function (user_service_1_1) {
                 user_service_1 = user_service_1_1;
@@ -76,7 +75,7 @@ System.register(['angular2/core', 'angular2/router', './users/user.service'], fu
                         templateUrl: '/views/aboutUs.html',
                         providers: [user_service_1.UserService]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_2.RouteParams, user_service_1.UserService])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, user_service_1.UserService])
                 ], AboutUsPageComponent);
                 return AboutUsPageComponent;
             })();

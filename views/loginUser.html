@@ -1,4 +1,17 @@
-<div class="container-fluid jumbotron">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Angular 2 Task1</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a [routerLink]="['RegisterUser']">Sign Up</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container jumbotron">
 	<h2>Login Page</h2>
 	<form (submit)="login($event, username.value, password.value)">
 		<div class="form-group">

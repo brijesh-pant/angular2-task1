@@ -1,13 +1,14 @@
 import {Component} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
 import {CanDeactivate, ComponentInstruction} from 'angular2/router';
 
 @Component({
-	templateUrl: '/views/loginUser.html'
+	templateUrl: '/views/loginUser.html',
+	directives: [ROUTER_DIRECTIVES],
 })
 
-export class LoginUserComponent {//implements CanDeactivate {
+export class LoginUserComponent {
 	private _router: Router;
 	constructor(private router: Router,
 		private http: Http) {
@@ -21,7 +22,7 @@ export class LoginUserComponent {//implements CanDeactivate {
 
 		if(this.loggedIn() == true){
 			console.log("true logged in");
-			let route = ['Homepage'];
+			let route = ['Dashboard'];
 			this._router.navigate(route);
 		} else{
 			console.log("false logged in");
@@ -39,7 +40,7 @@ export class LoginUserComponent {//implements CanDeactivate {
 				},
 				err => this.logError(err),
 				() => {
-					let route = ['Homepage'];
+					let route = ['Dashboard'];
 					this._router.navigate(route);
 					console.log('Authentication Complete');
 				}
