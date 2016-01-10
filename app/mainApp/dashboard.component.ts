@@ -6,7 +6,6 @@ import {HomepageComponent} from './homepage.component'
 import {UserListingComponent} from '../users/user-listing.component'
 import {AboutUsPageComponent} from '../about-us-page.component'
 import {UserInfoComponent} from '../users/user-info.component'
-/**/
 
 import {UserService} from '../users/user.service'
 import {User} from '../users/user';

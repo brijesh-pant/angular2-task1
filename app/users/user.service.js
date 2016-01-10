@@ -89,6 +89,22 @@ System.register(['angular2/core'], function(exports_1) {
                         
                         );*/
                 };
+                UserService.prototype.checkLoginCredentials = function (emailId, password) {
+                    return this.getUsers().then(function (users) { return users.filter(function (user) { return ((user.email === emailId) && (user.password === password)); })[0]; });
+                    /*return this.getUsers().then(users => {
+            
+                        console.log("Filtered user", users.filter(user => {
+                            console.log("emailId type", emailId);
+                            console.log("password type", password);
+                            console.log("user email", user);
+                            console.log("typeof useremail", user.email);
+                            console.log("typeof password", user.password);
+                            return ((user.email === emailId) && (user.password === password))
+                        })[0]
+                        );
+            
+                    });*/
+                };
                 UserService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])

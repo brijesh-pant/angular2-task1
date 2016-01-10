@@ -36,55 +36,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './mainApp
                     this._router = _router;
                     this.http = http;
                 }
-                //======================================
-                AppComponent.prototype.login = function (event, username, password) {
-                    var _this = this;
-                    // This will be called when the user clicks on the Login button
-                    event.preventDefault();
-                    console.log("in login", username, password);
-                    if (this.loggedIn() == true) {
-                        console.log("true logged in");
-                        var route = ['Homepage'];
-                        this._router.navigate(route);
-                    }
-                    else {
-                        console.log("false logged in");
-                        var creds = "username=" + username + "&password=" + password;
-                        var headers = new http_1.Headers();
-                        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-                        this.http.post('http://localhost:4000', creds, {
-                            headers: headers
-                        })
-                            .subscribe(function (data) {
-                            console.log("Before save jwt", data._body);
-                            _this.saveJwt(data._body);
-                        }, function (err) { return _this.logError(err); }, function () {
-                            var route = ['Homepage'];
-                            console.log("Route", route);
-                            _this._router.navigate(route);
-                            console.log('Authentication Complete');
-                        });
-                    }
-                    /* data => console.log("Data",data._body)
-            
-                    this.http.get('http://localhost:4000/')
-                        // Call map on the response observable to get the parsed people object
-                        
-                        // Subscribe to the observable to get the parsed people object and attach it to the
-                        // component
-                        .subscribe(res => {
-                            console.log("Response", res.json()); } );*/
-                };
-                AppComponent.prototype.loggedIn = function () {
-                    console.log("In login", localStorage.getItem('tokenId'));
-                    return (localStorage.getItem('tokenId') ? true : false);
-                };
-                AppComponent.prototype.saveJwt = function (jwt) {
-                    if (jwt) {
-                        console.log("Save jwt", jwt);
-                        localStorage.setItem('tokenId', jwt);
-                    }
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',

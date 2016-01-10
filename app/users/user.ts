@@ -10,6 +10,7 @@ export class User{
 			public email: string,
 			public description: string,
 			public imageUrl: string,
+			public password: string,
 			public salesDone: MonthlySales
 		) {}
 }

@@ -30,7 +30,6 @@ export class HomepageComponent {
 	constructor( private _router: Router,
 				private http: Http,
 				private _userService: UserService) {
-		
 
 	}
 

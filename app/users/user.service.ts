@@ -84,4 +84,22 @@ export class UserService {
 			
 			);*/
 	}
+
+	checkLoginCredentials(emailId: string, password: string) {
+		return this.getUsers().then(users => users.filter(user => ((user.email === emailId) && (user.password === password)))[0]);
+		/*return this.getUsers().then(users => {
+
+			console.log("Filtered user", users.filter(user => {
+				console.log("emailId type", emailId);
+				console.log("password type", password);
+				console.log("user email", user);
+				console.log("typeof useremail", user.email);
+				console.log("typeof password", user.password);
+				return ((user.email === emailId) && (user.password === password))
+			})[0]
+			);
+
+		});*/
+
+	}
 }

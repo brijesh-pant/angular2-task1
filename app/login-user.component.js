@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http', './users/user.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, http_1;
+    var core_1, router_1, http_1, user_service_1;
     var LoginUserComponent;
     return {
         setters:[
@@ -20,13 +20,18 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (user_service_1_1) {
+                user_service_1 = user_service_1_1;
             }],
         execute: function() {
             LoginUserComponent = (function () {
-                function LoginUserComponent(router, http) {
+                function LoginUserComponent(router, http, _userService) {
                     this.router = router;
                     this.http = http;
+                    this._userService = _userService;
                     this._router = router;
+                    this.loginError = true;
                 }
                 LoginUserComponent.prototype.login = function (event, username, password) {
                     var _this = this;
@@ -40,19 +45,27 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                     }
                     else {
                         console.log("false logged in");
-                        var creds = "username=" + username + "&password=" + password;
-                        var headers = new http_1.Headers();
-                        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-                        this.http.post('http://localhost:4000', creds, {
-                            headers: headers
-                        })
-                            .subscribe(function (data) {
-                            console.log("Before save jwt", data._body);
-                            _this.saveJwt(data._body);
-                        }, function (err) { return _this.logError(err); }, function () {
-                            var route = ['Dashboard'];
-                            _this._router.navigate(route);
-                            console.log('Authentication Complete');
+                        this._userService.checkLoginCredentials(username, password).then(function (user) {
+                            console.log("User got by using email:", user);
+                            if (user == undefined) {
+                                _this.loginError = false;
+                            }
+                            else {
+                                var creds = "username=" + username + "&password=" + password;
+                                var headers = new http_1.Headers();
+                                headers.append('Content-Type', 'application/x-www-form-urlencoded');
+                                _this.http.post('http://localhost:4000', creds, {
+                                    headers: headers
+                                })
+                                    .subscribe(function (data) {
+                                    console.log("Before save jwt", data._body);
+                                    _this.saveJwt(data._body);
+                                }, function (err) { return _this.logError(err); }, function () {
+                                    var route = ['Dashboard'];
+                                    _this._router.navigate(route);
+                                    console.log('Authentication Complete');
+                                });
+                            }
                         });
                     }
                     /* data => console.log("Data",data._body)
@@ -75,12 +88,21 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                         localStorage.setItem('tokenId', jwt);
                     }
                 };
+                LoginUserComponent.prototype.routerOnActivate = function (next, prev) {
+                    if (localStorage.getItem('tokenId')) {
+                        this._router.navigate(['Dashboard']);
+                    }
+                    else {
+                        return true;
+                    }
+                };
                 LoginUserComponent = __decorate([
                     core_1.Component({
                         templateUrl: '/views/loginUser.html',
+                        providers: [user_service_1.UserService],
                         directives: [router_1.ROUTER_DIRECTIVES],
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, http_1.Http])
+                    __metadata('design:paramtypes', [router_1.Router, http_1.Http, user_service_1.UserService])
                 ], LoginUserComponent);
                 return LoginUserComponent;
             })();

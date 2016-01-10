@@ -1,18 +1,23 @@
 import {Component} from 'angular2/core';
-import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Router, ROUTER_DIRECTIVES, CanDeactivate, ComponentInstruction} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
-import {CanDeactivate, ComponentInstruction} from 'angular2/router';
+
+import {UserService} from './users/user.service'
 
 @Component({
 	templateUrl: '/views/loginUser.html',
+	providers: [UserService],
 	directives: [ROUTER_DIRECTIVES],
 })
 
 export class LoginUserComponent {
+	private loginError: boolean;
 	private _router: Router;
 	constructor(private router: Router,
-		private http: Http) {
+		private http: Http,
+		private _userService: UserService) {
 		this._router = router;
+		this.loginError = true;
 	}
 
 	login(event, username, password) {
@@ -26,25 +31,33 @@ export class LoginUserComponent {
 			this._router.navigate(route);
 		} else{
 			console.log("false logged in");
-			var creds = "username=" + username + "&password=" + password;
-
-			var headers = new Headers();
-			headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-			this.http.post('http://localhost:4000', creds, {
-				headers: headers
-			})
-				.subscribe(data => {
-					console.log("Before save jwt", data._body);
-					this.saveJwt(data._body)
-				},
-				err => this.logError(err),
-				() => {
-					let route = ['Dashboard'];
-					this._router.navigate(route);
-					console.log('Authentication Complete');
+			this._userService.checkLoginCredentials(username, password).then(user => {
+				console.log("User got by using email:", user);
+				if(user == undefined){
+					this.loginError = false;
 				}
-				);	
+				else {
+					var creds = "username=" + username + "&password=" + password;
+
+					var headers = new Headers();
+					headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+					this.http.post('http://localhost:4000', creds, {
+						headers: headers
+					})
+						.subscribe(data => {
+							console.log("Before save jwt", data._body);
+							this.saveJwt(data._body)
+						},
+						err => this.logError(err),
+						() => {
+							let route = ['Dashboard'];
+							this._router.navigate(route);
+							console.log('Authentication Complete');
+						}
+						);	
+				}
+			});
 		}
 		
 
@@ -61,8 +74,6 @@ export class LoginUserComponent {
 		
 	}
 
-	
-
 	loggedIn(): boolean{
 		console.log("In login", localStorage.getItem('tokenId'));
 		return (localStorage.getItem('tokenId') ? true : false);
@@ -75,15 +86,12 @@ export class LoginUserComponent {
 		}
 	}
 
-	/*routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction): any {
-		if (localStorage.getItem('jwt')) {
-			alert("deactivated");
-			let route = ['Homepage'];
-			this._router.navigate(route);
-			return true;
+	routerOnActivate(next: ComponentInstruction, prev: ComponentInstruction): any {
+		if (localStorage.getItem('tokenId')) {
+			this._router.navigate(['Dashboard']);
 		}
 		else {
-			
+			return true;
 		}
-	}*/
+	}
 }

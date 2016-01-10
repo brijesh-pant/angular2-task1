@@ -13,6 +13,9 @@
 
 <div class="container jumbotron">
 	<h1>Login Page</h1>
+	<div [hidden]="loginError" class="alert alert-danger">
+		Invalid login credentials
+	</div>
 	<form (submit)="login($event, username.value, password.value)">
 		<div class="form-group">
 			<label for="username">Username</label>
