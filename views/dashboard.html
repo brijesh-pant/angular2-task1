@@ -1,12 +1,12 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Angular 2 Task1</a>
+      <a class="navbar-brand" [routerLink]="['Dashboard']">Angular 2 Task1</a>
     </div>
     <div>
       <ul class="nav navbar-nav navbar-right">
-      	<li><p class="navbar-brand">{{username}}</p></li>
-        <li><a><span class="glyphicon glyphicon-log-out" (click)="logout()"></span> Logout</a></li>
+      	<li><p class="navbar-brand">Welcome {{username}}</p></li>
+        <li><a style="cursor:pointer;" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div>
   </div>
@@ -16,7 +16,6 @@
 	<div class="col-sm-2">
 		<ul class="list-group">
 			<li class="list-group-item"><label><a [routerLink]="['Homepage']">Home</a></label></li>
-	        <li class="list-group-item"><label><a [routerLink]="['LoginUser']">Login</a></label></li>
 	        <!--<li class="list-group-item"><label><a href="#">User Info</a></label></li>-->
 	        <li class="list-group-item"><label><a [routerLink]="['UserListing']">User Listing</a> </label></li>
 	        <!--<li class="list-group-item"><label><a href="#">Contact Us</a></label></li>

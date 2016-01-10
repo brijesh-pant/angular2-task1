@@ -69,7 +69,20 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './homepag
                 DashboardComponent.prototype.logout = function () {
                     console.log("In logout", localStorage.getItem('tokenId'));
                     localStorage.removeItem('tokenId');
+                    this._router.navigate(['LoginUser']);
                     console.log("In logout", localStorage.getItem('tokenId'));
+                };
+                DashboardComponent.prototype.loggedIn = function () {
+                    console.log("In login", localStorage.getItem('tokenId'));
+                    return (localStorage.getItem('tokenId') ? true : false);
+                };
+                DashboardComponent.prototype.routerOnActivate = function (next, prev) {
+                    if (localStorage.getItem('tokenId')) {
+                        return true;
+                    }
+                    else {
+                        this._router.navigate(['LoginUser']);
+                    }
                 };
                 //========================================
                 DashboardComponent.prototype.addElement = function (value) {

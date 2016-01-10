@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Angular 2 Task1</a>
+      <a class="navbar-brand" [routerLink]="['Dashboard']">Angular 2 Task1</a>
     </div>
     <div>
       <ul class="nav navbar-nav navbar-right">
@@ -12,7 +12,7 @@
 </nav>
 
 <div class="container jumbotron">
-	<h2>Login Page</h2>
+	<h1>Login Page</h1>
 	<form (submit)="login($event, username.value, password.value)">
 		<div class="form-group">
 			<label for="username">Username</label>

@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {ComponentInstruction, OnActivate, CanActivate, Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
 
 import {HomepageComponent} from './homepage.component'
@@ -16,6 +16,10 @@ import {User} from '../users/user';
 	providers: [UserService],
 	directives: [ROUTER_DIRECTIVES],
 })
+
+/*@CanActivate((next, prev) => {
+		return (localStorage.getItem('tokenId') ? true : false);	
+})*/
 
 
 @RouteConfig([
@@ -65,7 +69,22 @@ export class DashboardComponent {
 	logout() {
 		console.log("In logout", localStorage.getItem('tokenId'));
 		localStorage.removeItem('tokenId');
+		this._router.navigate(['LoginUser']);
 		console.log("In logout", localStorage.getItem('tokenId'));
+	}
+
+	loggedIn(): boolean {
+		console.log("In login", localStorage.getItem('tokenId'));
+		return (localStorage.getItem('tokenId') ? true : false);
+	}
+
+	routerOnActivate(next: ComponentInstruction, prev: ComponentInstruction): any {
+		if (localStorage.getItem('tokenId')) {
+			return true;
+		}
+		else {
+			this._router.navigate(['LoginUser']);
+		}
 	}
 
 	//========================================
